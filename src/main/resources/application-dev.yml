@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5434/trayectoria}
+    username: ${DB_USERNAME:trayectoria}
+    password: ${DB_PASSWORD:sys}
+
+  jpa:
+    hibernate:
+      # create-drop: recreates the schema on every restart — fine for dev
+      # Switch to validate + flyway.enabled=true when schema is stable
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: false
+
+  # Disable Spring Security's default form login — JWT replaces it
+  security:
+    user:
+      name: disabled
+
+jwt:
+  secret: ${JWT_SECRET}
+
+openai:
+  api-key: ${OPENAI_API_KEY:}   # Optional in dev — AI endpoints will fail gracefully if missing
+
+cloudinary:
+  cloud-name: ${CLOUDINARY_CLOUD_NAME:}
+  api-key: ${CLOUDINARY_API_KEY:}
+  api-secret: ${CLOUDINARY_API_SECRET:}
+
+logging:
+  level:
+    com.edumora.trayectoria: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql: TRACE

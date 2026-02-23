@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: trayectoria
+
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}   # Default to 'dev' profile if not set
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO}
+    show-sql: false          # logs every SQL query — disable in production
+    properties:
+      hibernate:
+        format_sql: false    # pretty-prints the SQL in logs - disable in production
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    enabled: ${FLYWAY_ENABLED}          # Disabled while ddl-auto=create-drop is active
+    # When  ready to switch to Flyway:
+    #   1. Set ddl-auto: validate
+    #   2. Set enabled: true
+    #   3. Flyway will run V1__init.sql automatically on startup
+    locations: classpath:db/migration
+    baseline-on-migrate: false
+
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: /api       # All endpoints are prefixed with /api
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration-ms: ${JWT_EXPIRATION_MS:86400000}   # 24 hours
+  refresh-expiration-ms: ${JWT_REFRESH_MS:604800000} # 7 days
+
+openai:
+  api-key: ${OPENAI_API_KEY}
+  endpoint: ${OPENAI_ENDPOINT}
+  model: ${OPENAI_MODEL:gpt-4o-mini}       # Cost-efficient for Phase 1
+  max-tokens: ${OPENAI_MAX_TOKENS:2000}
+
+cloudinary:
+  cloud-name: ${CLOUDINARY_CLOUD_NAME}
+  api-key: ${CLOUDINARY_API_KEY}
+  api-secret: ${CLOUDINARY_API_SECRET}
+
+logging:
+  level:
+    root: WARN

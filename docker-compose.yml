@@ -1,0 +1,32 @@
+# ================================================================
+#  docker-compose.yml — trayectoria-backend
+#  Runs PostgreSQL only. The app runs locally with ./gradlew bootRun
+#  Usage: docker-compose up -d
+# ================================================================
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: trayectoria-db
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: trayectoria
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+
+    ports:
+      - "5434:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-postgres} -d trayectoria"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+    name: trayectoria_postgres_data
