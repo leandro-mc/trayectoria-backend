@@ -1,8 +1,8 @@
-package com.edumora.trayectoria.application.usecase
+package com.edumora.trayectoria.application.usecase.auth
 
 import com.edumora.trayectoria.infrastructure.security.jwt.JwtService
 import com.edumora.trayectoria.shared.exception.UnauthorizedException
-import com.edumora.trayectoria.web.dto.request.RefreshTokenRequest
+import com.edumora.trayectoria.web.dto.request.auth.RefreshTokenRequest
 import com.edumora.trayectoria.web.dto.response.AuthResponse
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service

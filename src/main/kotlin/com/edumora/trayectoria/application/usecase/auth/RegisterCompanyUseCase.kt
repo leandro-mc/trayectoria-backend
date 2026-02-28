@@ -1,4 +1,4 @@
-package com.edumora.trayectoria.application.usecase
+package com.edumora.trayectoria.application.usecase.auth
 
 import com.edumora.trayectoria.infrastructure.persistence.entity.CompanyProfileEntity
 import com.edumora.trayectoria.infrastructure.persistence.entity.UserEntity
@@ -8,7 +8,7 @@ import com.edumora.trayectoria.infrastructure.persistence.repository.UserReposit
 import com.edumora.trayectoria.infrastructure.security.jwt.JwtService
 import com.edumora.trayectoria.shared.exception.ConflictException
 import com.edumora.trayectoria.shared.exception.NotFoundException
-import com.edumora.trayectoria.web.dto.request.RegisterCompanyRequest
+import com.edumora.trayectoria.web.dto.request.auth.RegisterCompanyRequest
 import com.edumora.trayectoria.web.dto.response.AuthResponse
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.User

@@ -1,8 +1,8 @@
-package com.edumora.trayectoria.application.usecase
+package com.edumora.trayectoria.application.usecase.auth
 
 import com.edumora.trayectoria.infrastructure.security.jwt.JwtService
 import com.edumora.trayectoria.shared.exception.UnauthorizedException
-import com.edumora.trayectoria.web.dto.request.LoginRequest
+import com.edumora.trayectoria.web.dto.request.auth.LoginRequest
 import com.edumora.trayectoria.web.dto.response.AuthResponse
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.BadCredentialsException

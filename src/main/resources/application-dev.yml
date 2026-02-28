@@ -8,7 +8,7 @@ spring:
     hibernate:
       # create-drop: recreates the schema on every restart — fine for dev
       # Switch to validate + flyway.enabled=true when schema is stable
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:

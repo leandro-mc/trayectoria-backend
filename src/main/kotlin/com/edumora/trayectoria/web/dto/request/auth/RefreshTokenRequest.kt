@@ -1,4 +1,4 @@
-package com.edumora.trayectoria.web.dto.request
+package com.edumora.trayectoria.web.dto.request.auth
 
 import jakarta.validation.constraints.NotBlank
 

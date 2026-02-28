@@ -1,9 +1,9 @@
-package com.edumora.trayectoria.application.usecase
+package com.edumora.trayectoria.application.usecase.candidate
 
 import com.edumora.trayectoria.infrastructure.persistence.repository.CandidateProfileRepository
 import com.edumora.trayectoria.infrastructure.persistence.repository.UserRepository
 import com.edumora.trayectoria.shared.util.orThrow
-import com.edumora.trayectoria.web.dto.request.UpdateCandidateProfileRequest
+import com.edumora.trayectoria.web.dto.request.candidate.UpdateCandidateProfileRequest
 import com.edumora.trayectoria.web.dto.response.CandidateProfileResponse
 import com.edumora.trayectoria.web.mapper.CandidateProfileMapper
 import org.springframework.stereotype.Service

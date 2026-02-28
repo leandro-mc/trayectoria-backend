@@ -1,4 +1,4 @@
-package com.edumora.trayectoria.application.usecase
+package com.edumora.trayectoria.application.usecase.candidate
 
 import com.edumora.trayectoria.infrastructure.persistence.entity.EducationEntity
 import com.edumora.trayectoria.infrastructure.persistence.repository.CandidateProfileRepository
@@ -6,7 +6,7 @@ import com.edumora.trayectoria.infrastructure.persistence.repository.EducationRe
 import com.edumora.trayectoria.infrastructure.persistence.repository.UserRepository
 import com.edumora.trayectoria.shared.exception.ForbiddenException
 import com.edumora.trayectoria.shared.util.orThrow
-import com.edumora.trayectoria.web.dto.request.EducationRequest
+import com.edumora.trayectoria.web.dto.request.candidate.EducationRequest
 import com.edumora.trayectoria.web.dto.response.EducationResponse
 import com.edumora.trayectoria.web.mapper.CandidateProfileMapper
 import org.springframework.stereotype.Service

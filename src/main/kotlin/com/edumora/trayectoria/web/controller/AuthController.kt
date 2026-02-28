@@ -1,13 +1,13 @@
 package com.edumora.trayectoria.web.controller
 
-import com.edumora.trayectoria.application.usecase.LoginUseCase
-import com.edumora.trayectoria.application.usecase.RefreshTokenUseCase
-import com.edumora.trayectoria.application.usecase.RegisterCandidateUseCase
-import com.edumora.trayectoria.application.usecase.RegisterCompanyUseCase
-import com.edumora.trayectoria.web.dto.request.LoginRequest
-import com.edumora.trayectoria.web.dto.request.RefreshTokenRequest
-import com.edumora.trayectoria.web.dto.request.RegisterCandidateRequest
-import com.edumora.trayectoria.web.dto.request.RegisterCompanyRequest
+import com.edumora.trayectoria.application.usecase.auth.LoginUseCase
+import com.edumora.trayectoria.application.usecase.auth.RefreshTokenUseCase
+import com.edumora.trayectoria.application.usecase.auth.RegisterCandidateUseCase
+import com.edumora.trayectoria.application.usecase.auth.RegisterCompanyUseCase
+import com.edumora.trayectoria.web.dto.request.auth.LoginRequest
+import com.edumora.trayectoria.web.dto.request.auth.RefreshTokenRequest
+import com.edumora.trayectoria.web.dto.request.auth.RegisterCandidateRequest
+import com.edumora.trayectoria.web.dto.request.auth.RegisterCompanyRequest
 import com.edumora.trayectoria.web.dto.response.AuthResponse
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus

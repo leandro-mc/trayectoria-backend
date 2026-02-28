@@ -1,4 +1,4 @@
-package com.edumora.trayectoria.application.usecase
+package com.edumora.trayectoria.application.usecase.candidate
 
 import com.edumora.trayectoria.infrastructure.persistence.entity.WorkExperienceEntity
 import com.edumora.trayectoria.infrastructure.persistence.repository.CandidateProfileRepository
@@ -6,7 +6,7 @@ import com.edumora.trayectoria.infrastructure.persistence.repository.UserReposit
 import com.edumora.trayectoria.infrastructure.persistence.repository.WorkExperienceRepository
 import com.edumora.trayectoria.shared.exception.ForbiddenException
 import com.edumora.trayectoria.shared.util.orThrow
-import com.edumora.trayectoria.web.dto.request.WorkExperienceRequest
+import com.edumora.trayectoria.web.dto.request.candidate.WorkExperienceRequest
 import com.edumora.trayectoria.web.dto.response.WorkExperienceResponse
 import com.edumora.trayectoria.web.mapper.CandidateProfileMapper
 import org.springframework.stereotype.Service

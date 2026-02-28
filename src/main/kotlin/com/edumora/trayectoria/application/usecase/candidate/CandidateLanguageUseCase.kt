@@ -1,4 +1,4 @@
-package com.edumora.trayectoria.application.usecase
+package com.edumora.trayectoria.application.usecase.candidate
 
 import com.edumora.trayectoria.infrastructure.persistence.entity.CandidateLanguageEmbeddable
 import com.edumora.trayectoria.infrastructure.persistence.repository.CandidateProfileRepository
@@ -6,7 +6,7 @@ import com.edumora.trayectoria.infrastructure.persistence.repository.UserReposit
 import com.edumora.trayectoria.shared.exception.ConflictException
 import com.edumora.trayectoria.shared.exception.NotFoundException
 import com.edumora.trayectoria.shared.util.orThrow
-import com.edumora.trayectoria.web.dto.request.LanguageRequest
+import com.edumora.trayectoria.web.dto.request.candidate.LanguageRequest
 import com.edumora.trayectoria.web.dto.response.LanguageResponse
 import com.edumora.trayectoria.web.mapper.CandidateProfileMapper
 import org.springframework.stereotype.Service
