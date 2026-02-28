@@ -4,10 +4,10 @@ import com.edumora.trayectoria.shared.exception.NotFoundException
 import java.util.Optional
 
 /**
- * Extension function para Optional — evita el .orElseThrow() verboso.
+ * Extension function for Optional — avoids the verbose .orElseThrow() syntax.
  *
- * Uso:
- *   val user = userRepository.findById(id).orThrow("User not found: $id")
+ * Usage:
+ * val user = userRepository.findById(id).orThrow("User not found: $id")
  */
 fun <T> Optional<T>.orThrow(message: String): T =
     orElseThrow { NotFoundException(message) }

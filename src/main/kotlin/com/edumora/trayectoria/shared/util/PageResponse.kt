@@ -3,17 +3,17 @@ package com.edumora.trayectoria.shared.util
 import org.springframework.data.domain.Page
 
 /**
- * Wrapper estándar para respuestas paginadas.
- * Evita exponer el objeto Page<T> de Spring directamente al cliente.
+ * Standard wrapper for paginated responses.
+ * Avoids exposing Spring's Page<T> object directly to the client.
  *
- * El cliente recibe:
+ * The client receives:
  * {
- *   "content": [...],
- *   "page": 0,
- *   "size": 10,
- *   "totalElements": 42,
- *   "totalPages": 5,
- *   "last": false
+ * "content": [...],
+ * "page": 0,
+ * "size": 10,
+ * "totalElements": 42,
+ * "totalPages": 5,
+ * "last": false
  * }
  */
 data class PageResponse<T>(

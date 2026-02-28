@@ -5,15 +5,15 @@ import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetails
 
 /**
- * Utilidad para obtener el usuario autenticado desde cualquier use case.
+ * Utility to retrieve the authenticated user from any use case.
  *
- * El controller extrae el email del SecurityContext y lo pasa al use case.
- * Los use cases NO acceden al SecurityContext directamente —
- * eso es responsabilidad de la capa web. Esta función es el puente.
+ * The controller extracts the email from the SecurityContext and passes it
+ * to the use case. Use cases DO NOT access the SecurityContext directly —
+ * that is the web layer's responsibility. This function acts as the bridge.
  *
- * Uso en controller:
- *   val email = SecurityUtils.currentUserEmail()
- *   useCase.execute(email, request)
+ * Usage in controller:
+ * val email = SecurityUtils.currentUserEmail()
+ * useCase.execute(email, request)
  */
 object SecurityUtils {
 
