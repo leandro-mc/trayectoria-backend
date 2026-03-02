@@ -22,6 +22,41 @@ Built with **Kotlin + Spring Boot 3.5** following **Clean Architecture** princip
 
 ---
 
+## Getting Started
+
+```bash
+# Clone and run
+git clone  https://github.com/leandro-mc/trayectoria-backend.git
+cd trayectoria-backend
+
+# Copy and fill env vars
+cp .env.example .env
+
+# Run with Docker (DB only)
+docker-compose up -d
+
+# Start the app
+./gradlew bootRun
+```
+
+---
+
+## Environment Variables
+
+```env
+DB_URL=jdbc:postgresql://localhost:5432/trayectoria
+DB_USERNAME=postgres
+DB_PASSWORD=yourpassword
+JWT_SECRET=your-256-bit-secret
+JWT_EXPIRATION_MS=86400000
+OPENAI_API_KEY=sk-...
+CLOUDINARY_CLOUD_NAME=...
+CLOUDINARY_API_KEY=...
+CLOUDINARY_API_SECRET=...
+```
+
+---
+
 ## Project Structure
 
 ```
@@ -54,22 +89,6 @@ src/main/kotlin/com/edumora/trayectoria/
 └── shared/
     ├── exception/          # GlobalExceptionHandler + custom exceptions
     └── util/               # Kotlin extensions, constants
-```
-
----
-
-## Environment Variables
-
-```env
-DB_URL=jdbc:postgresql://localhost:5432/trayectoria
-DB_USERNAME=postgres
-DB_PASSWORD=yourpassword
-JWT_SECRET=your-256-bit-secret
-JWT_EXPIRATION_MS=86400000
-OPENAI_API_KEY=sk-...
-CLOUDINARY_CLOUD_NAME=...
-CLOUDINARY_API_KEY=...
-CLOUDINARY_API_SECRET=...
 ```
 
 ---
@@ -176,25 +195,6 @@ Base URL: `/api/v1`
 - Interview result sharing with companies
 - Notifications system
 - Admin role and dashboard
-
----
-
-## Getting Started
-
-```bash
-# Clone and run
-git clone  https://github.com/leandro-mc/trayectoria-backend.git
-cd trayectoria-backend
-
-# Copy and fill env vars
-cp .env.example .env
-
-# Run with Docker (DB only)
-docker-compose up -d
-
-# Start the app
-./gradlew bootRun
-```
 
 ---
 
