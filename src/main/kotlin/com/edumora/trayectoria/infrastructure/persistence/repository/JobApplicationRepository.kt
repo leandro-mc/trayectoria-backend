@@ -29,4 +29,15 @@ interface JobApplicationRepository : JpaRepository<JobApplicationEntity, Long> {
         WHERE a.id = :id AND a.jobOffer.company.userId = :companyUserId
     """)
     fun findByIdAndCompanyUserId(id: Long, companyUserId: Long): Optional<JobApplicationEntity>
+
+    fun findByCandidateUserIdOrderByAppliedAtDesc(
+        candidateUserId: Long,
+        pageable: Pageable
+    ): Page<JobApplicationEntity>
+
+    fun findByJobOfferIdOrderByAppliedAtDesc(
+        jobOfferId: Long, pageable: Pageable
+    ): Page<JobApplicationEntity>
+
+    fun existsByIdAndCandidateUserId(id: Long, candidateId: Long): Boolean
 }
