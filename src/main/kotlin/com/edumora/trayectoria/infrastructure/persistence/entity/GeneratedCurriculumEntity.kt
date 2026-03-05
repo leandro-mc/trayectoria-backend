@@ -1,6 +1,8 @@
 package com.edumora.trayectoria.infrastructure.persistence.entity
 
 import jakarta.persistence.*
+import org.hibernate.annotations.JdbcTypeCode
+import org.hibernate.type.SqlTypes
 import java.time.LocalDateTime
 
 @Entity
@@ -21,8 +23,9 @@ class GeneratedCurriculumEntity(
     var jobOffer: JobOfferEntity? = null,
 
     // Stored as JSONB in PostgreSQL — structured AI-generated content
-    @Column(nullable = false, columnDefinition = "jsonb")
-    var content: String = "",
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb")
+    var content: CurriculumContent = CurriculumContent(),
 
     @Column(name = "is_ai_generated", nullable = false)
     var isAiGenerated: Boolean = true,

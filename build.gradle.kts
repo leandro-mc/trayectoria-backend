@@ -5,12 +5,12 @@ plugins {
 	kotlin("kapt") version "1.9.25"                          // Para MapStruct
 	id("org.springframework.boot") version "3.5.11"
 	id("io.spring.dependency-management") version "1.1.7"
-
 }
 
 group = "com.edumora"
 version = "0.0.1-SNAPSHOT"
 description = "TrayectorIA Backend"
+
 
 java {
 	toolchain {
@@ -23,6 +23,9 @@ repositories {
 }
 
 val mapstructVersion = "1.5.5.Final"						// Versión de MapStruct
+
+// Versión de SpringAI
+val springAiVersion = "1.0.0"	// BOM de Spring AI (usa esta versión)
 
 dependencies {
 	// Spring Boot
@@ -47,6 +50,10 @@ dependencies {
 	implementation("io.jsonwebtoken:jjwt-api:0.12.6")
 	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.6")
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.6")
+
+	// Spring AI — OpenAI auto-configuration
+	implementation(platform("org.springframework.ai:spring-ai-bom:$springAiVersion"))
+	implementation("org.springframework.ai:spring-ai-starter-model-openai")
 
 	// PostgreSQL
 	runtimeOnly("org.postgresql:postgresql")

@@ -22,6 +22,10 @@ spring:
     user:
       name: disabled
 
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:}
+
 jwt:
   secret: ${JWT_SECRET}
 
