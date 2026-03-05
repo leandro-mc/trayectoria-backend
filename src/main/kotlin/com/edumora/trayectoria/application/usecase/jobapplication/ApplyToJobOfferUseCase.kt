@@ -1,4 +1,4 @@
-package com.edumora.trayectoria.application.usecase.application
+package com.edumora.trayectoria.application.usecase.jobapplication
 
 import com.edumora.trayectoria.infrastructure.persistence.entity.JobApplicationEntity
 import com.edumora.trayectoria.infrastructure.persistence.repository.CandidateProfileRepository

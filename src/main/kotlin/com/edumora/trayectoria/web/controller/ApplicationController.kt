@@ -1,10 +1,10 @@
 package com.edumora.trayectoria.web.controller
 
-import com.edumora.trayectoria.application.usecase.application.ApplyToJobOfferUseCase
-import com.edumora.trayectoria.application.usecase.application.DeleteApplicationUseCase
-import com.edumora.trayectoria.application.usecase.application.GetJobApplicationsUseCase
-import com.edumora.trayectoria.application.usecase.application.GetMyApplicationsUseCase
-import com.edumora.trayectoria.application.usecase.application.UpdateApplicationStatusUseCase
+import com.edumora.trayectoria.application.usecase.jobapplication.ApplyToJobOfferUseCase
+import com.edumora.trayectoria.application.usecase.jobapplication.DeleteApplicationUseCase
+import com.edumora.trayectoria.application.usecase.jobapplication.GetJobApplicationsUseCase
+import com.edumora.trayectoria.application.usecase.jobapplication.GetMyApplicationsUseCase
+import com.edumora.trayectoria.application.usecase.jobapplication.UpdateApplicationStatusUseCase
 import com.edumora.trayectoria.shared.util.SecurityUtils
 import com.edumora.trayectoria.web.dto.request.application.ApplyRequest
 import com.edumora.trayectoria.web.dto.request.application.UpdateApplicationStatusRequest

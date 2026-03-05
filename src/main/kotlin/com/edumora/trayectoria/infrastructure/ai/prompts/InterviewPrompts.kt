@@ -69,5 +69,6 @@ object InterviewPrompts {
           "recommendation": "STRONG_YES | YES | MAYBE | NO",
           "details": "Detailed feedback paragraph (max 200 words)"
         }
+        Respond in the SAME LANGUAGE in which most of the interview was conducted.
     """.trimIndent()
 }

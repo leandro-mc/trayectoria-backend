@@ -19,4 +19,6 @@ interface SimulatedInterviewRepository : JpaRepository<SimulatedInterviewEntity,
         ORDER BY i.id
     """)
     fun findByIdWithMessages(id: Long, candidateUserId: Long): Optional<SimulatedInterviewEntity>
+
+    fun findByCandidateUserId(candidateUserId: Long): List<SimulatedInterviewEntity>
 }
