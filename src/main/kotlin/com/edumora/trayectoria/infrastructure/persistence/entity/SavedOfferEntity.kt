@@ -30,7 +30,7 @@ class SavedOfferEntity(
 )
 
 @Embeddable
-class SavedOfferIdEmbeddable(
+data class SavedOfferIdEmbeddable(
     @Column(name = "candidate_id")
     var candidateId: Long = 0,
     @Column(name = "job_offer_id")

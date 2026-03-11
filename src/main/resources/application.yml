@@ -18,7 +18,6 @@ spring:
     properties:
       hibernate:
         format_sql: false    # pretty-prints the SQL in logs - disable in production
-        dialect: org.hibernate.dialect.PostgreSQLDialect
 
   flyway:
     enabled: ${FLYWAY_ENABLED}          # Disabled while ddl-auto=create-drop is active
@@ -57,3 +56,6 @@ cloudinary:
 logging:
   level:
     root: WARN
+    org.flywaydb: INFO
+    com.edumora.trayectoria: DEBUG
+    org.springframework.security: DEBUG

@@ -5,6 +5,7 @@ spring:
     password: ${DB_PASSWORD:sys}
 
   jpa:
+    open-in-view: false
     hibernate:
       # create-drop: recreates the schema on every restart — fine for dev
       # Switch to validate + flyway.enabled=true when schema is stable
@@ -43,3 +44,4 @@ logging:
     org.springframework.security: DEBUG
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql: TRACE
+    org.flywaydb: INFO
