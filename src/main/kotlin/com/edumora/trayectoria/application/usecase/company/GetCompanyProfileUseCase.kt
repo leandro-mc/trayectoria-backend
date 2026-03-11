@@ -6,6 +6,7 @@ import com.edumora.trayectoria.shared.util.orThrow
 import com.edumora.trayectoria.web.dto.response.CompanyProfileResponse
 import com.edumora.trayectoria.web.mapper.CompanyProfileMapper
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class GetCompanyProfileUseCase(
@@ -13,6 +14,7 @@ class GetCompanyProfileUseCase(
     private val companyProfileRepository: CompanyProfileRepository,
     private val mapper: CompanyProfileMapper
 ) {
+    @Transactional
     fun execute(email: String): CompanyProfileResponse {
         val user = userRepository.findByEmail(email).orThrow("User not found: $email")
         val profile = companyProfileRepository.findByUserId(user.id)

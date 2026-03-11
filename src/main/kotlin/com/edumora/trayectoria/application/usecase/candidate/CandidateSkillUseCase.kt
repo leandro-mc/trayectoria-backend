@@ -18,6 +18,7 @@ class CandidateSkillUseCase(
     private val skillRepository: SkillRepository,
     private val mapper: CandidateProfileMapper
 ) {
+    @Transactional(readOnly = true)
     fun list(email: String): List<SkillResponse> {
         val user = userRepository.findByEmail(email).orThrow("User not found")
         val profile = candidateProfileRepository.findByUserIdWithSkills(user.id)

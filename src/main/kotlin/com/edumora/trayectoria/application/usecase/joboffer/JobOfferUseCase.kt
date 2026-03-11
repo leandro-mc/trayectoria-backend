@@ -28,7 +28,7 @@ class JobOfferUseCase(
     private val mapper: JobOfferMapper
 ) {
     //  Público
-
+    @Transactional (readOnly = true)
     fun listActive(
         workMode: String?,
         jobType: String?,
@@ -48,6 +48,7 @@ class JobOfferUseCase(
         )
     }
 
+    @Transactional (readOnly = true)
     fun getById(id: Long): JobOfferResponse {
         val offer = jobOfferRepository.findByIdWithSkills(id)
             .orThrow("Job offer not found: $id")
@@ -55,7 +56,7 @@ class JobOfferUseCase(
     }
 
     //  Empresa
-
+    @Transactional (readOnly = true)
     fun listByCompany(email: String, pageable: Pageable): PageResponse<JobOfferSummaryResponse> {
         val user = userRepository.findByEmail(email).orThrow("User not found")
         return PageResponse.Companion.from(

@@ -6,13 +6,14 @@ import com.edumora.trayectoria.web.dto.request.auth.RefreshTokenRequest
 import com.edumora.trayectoria.web.dto.response.AuthResponse
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class RefreshTokenUseCase(
     private val jwtService: JwtService,
     private val userDetailsService: UserDetailsService
 ) {
-
+    @Transactional
     fun execute(request: RefreshTokenRequest): AuthResponse {
         val email = runCatching { jwtService.extractEmail(request.refreshToken) }
             .getOrElse { throw UnauthorizedException("Invalid refresh token") }

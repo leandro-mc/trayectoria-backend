@@ -8,6 +8,7 @@ import com.edumora.trayectoria.web.dto.response.JobApplicationResponse
 import com.edumora.trayectoria.web.mapper.JobApplicationMapper
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class GetMyApplicationsUseCase(
@@ -15,6 +16,7 @@ class GetMyApplicationsUseCase(
     private val jobApplicationRepository: JobApplicationRepository,
     private val mapper: JobApplicationMapper
 ) {
+    @Transactional(readOnly = true)
     fun execute(email: String, pageable: Pageable): PageResponse<JobApplicationResponse> {
         val user = userRepository.findByEmail(email).orThrow("User not found")
         return PageResponse.from(

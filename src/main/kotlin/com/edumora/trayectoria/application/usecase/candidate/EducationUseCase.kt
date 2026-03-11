@@ -58,6 +58,7 @@ class EducationUseCase(
         educationRepository.deleteById(id)
     }
 
+    @Transactional(readOnly = true)
     fun list(email: String): List<EducationResponse> {
         val user = userRepository.findByEmail(email).orThrow("User not found")
         return educationRepository.findAllByCandidateUserId(user.id)

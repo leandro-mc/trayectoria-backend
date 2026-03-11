@@ -15,12 +15,14 @@ class GetCurriculaUseCase(
     private val curriculumRepository: GeneratedCurriculumRepository,
     private val mapper: CurriculumMapper
 ) {
+    @Transactional(readOnly = true)
     fun listAll(email: String): List<GeneratedCurriculumResponse> {
         val user = userRepository.findByEmail(email).orThrow("User not found")
         return curriculumRepository.findByCandidateUserId(user.id)
             .map { mapper.toResponse(it) }
     }
 
+    @Transactional(readOnly = true)
     fun getById(email: String, id: Long): GeneratedCurriculumResponse {
         val user = userRepository.findByEmail(email).orThrow("User not found")
         val curriculum = curriculumRepository.findById(id).orThrow("Curriculum not found: $id")

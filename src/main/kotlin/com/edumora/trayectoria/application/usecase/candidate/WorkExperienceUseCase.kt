@@ -60,6 +60,7 @@ class WorkExperienceUseCase(
         workExperienceRepository.deleteById(id)
     }
 
+    @Transactional(readOnly = true)
     fun list(email: String): List<WorkExperienceResponse> {
         val user = userRepository.findByEmail(email).orThrow("User not found")
         return workExperienceRepository.findAllByCandidateUserId(user.id)

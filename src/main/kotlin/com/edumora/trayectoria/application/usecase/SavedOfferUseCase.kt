@@ -32,6 +32,7 @@ class SavedOfferUseCase(
     private val savedOfferRepository: SavedOfferRepository,
     private val jobOfferMapper: JobOfferMapper
 ) {
+    @Transactional(readOnly = true)
     fun listSaved(email: String, pageable: Pageable): PageResponse<JobOfferSummaryResponse> {
         val user = userRepository.findByEmail(email).orThrow("User not found")
         return PageResponse.from(
@@ -80,6 +81,7 @@ class SavedOfferUseCase(
         savedOfferRepository.deleteByCandidateUserIdAndJobOfferId(user.id, jobOfferId)
     }
 
+    @Transactional(readOnly = true)
     fun isSaved(email: String, jobOfferId: Long): Boolean {
         val user = userRepository.findByEmail(email).orThrow("User not found")
         return savedOfferRepository.existsByIdCandidateIdAndIdJobOfferId(user.id, jobOfferId)

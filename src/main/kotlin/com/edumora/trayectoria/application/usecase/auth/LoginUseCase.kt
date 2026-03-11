@@ -9,6 +9,7 @@ import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class LoginUseCase(
@@ -16,7 +17,7 @@ class LoginUseCase(
     private val userDetailsService: UserDetailsService,
     private val jwtService: JwtService
 ) {
-
+    @Transactional
     fun execute(request: LoginRequest): AuthResponse {
         try {
             // AuthenticationManager verifica email + password contra la BD

@@ -10,6 +10,7 @@ import com.edumora.trayectoria.web.dto.response.JobApplicationResponse
 import com.edumora.trayectoria.web.mapper.JobApplicationMapper
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 /**
  * Company queries applications for ONE of its job offers.
@@ -22,6 +23,7 @@ class GetJobApplicationsUseCase(
     private val jobApplicationRepository: JobApplicationRepository,
     private val mapper: JobApplicationMapper
 ) {
+    @Transactional(readOnly = true)
     fun execute(
         email: String,
         jobOfferId: Long,

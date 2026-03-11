@@ -18,6 +18,7 @@ class CandidateLanguageUseCase(
     private val candidateProfileRepository: CandidateProfileRepository,
     private val mapper: CandidateProfileMapper
 ) {
+    @Transactional(readOnly = true)
     fun list(email: String): List<LanguageResponse> {
         val user = userRepository.findByEmail(email).orThrow("User not found")
         val profile = candidateProfileRepository.findByUserId(user.id)

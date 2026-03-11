@@ -7,6 +7,7 @@ import com.edumora.trayectoria.shared.util.orThrow
 import com.edumora.trayectoria.web.dto.response.SimulatedInterviewResponse
 import com.edumora.trayectoria.web.mapper.InterviewMapper
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class GetInterviewsUseCase(
@@ -14,6 +15,7 @@ class GetInterviewsUseCase(
     private val interviewRepository: SimulatedInterviewRepository,
     private val mapper: InterviewMapper
 ) {
+    @Transactional(readOnly = true)
     fun listAll(email: String): List<SimulatedInterviewResponse> {
         val user = userRepository.findByEmail(email).orThrow("User not found")
         // toSummaryResponse — sin mensajes para no sobrecargar la respuesta del listado
@@ -21,6 +23,7 @@ class GetInterviewsUseCase(
             .map { mapper.toSummaryResponse(it) }
     }
 
+    @Transactional(readOnly = true)
     fun getById(email: String, id: Long): SimulatedInterviewResponse {
         val user = userRepository.findByEmail(email).orThrow("User not found")
         val interview = interviewRepository.findByIdWithMessages(id, user.id)
