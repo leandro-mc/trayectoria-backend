@@ -8,14 +8,14 @@ spring:
     hibernate:
       # create-drop: recreates the schema on every restart — fine for dev
       # Switch to validate + flyway.enabled=true when schema is stable
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: true
     properties:
       hibernate:
         format_sql: true
 
   flyway:
-    enabled: false
+    enabled: true
 
   # Disable Spring Security's default form login — JWT replaces it
   security:

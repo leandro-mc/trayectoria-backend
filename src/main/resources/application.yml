@@ -28,6 +28,7 @@ spring:
     #   3. Flyway will run V1__init.sql automatically on startup
     locations: classpath:db/migration
     baseline-on-migrate: false
+    validate-on-migrate: true
 
     ai:
       openai:

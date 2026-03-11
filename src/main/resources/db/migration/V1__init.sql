@@ -179,20 +179,3 @@ CREATE TABLE interview_message (
     content      TEXT        NOT NULL,
     sent_at      TIMESTAMP   NOT NULL DEFAULT NOW()
 );
-
--- SEED: Initial roles and privileges
-INSERT INTO privilege (name) VALUES
-    ('READ_PRIVILEGE'),
-    ('WRITE_PRIVILEGE');
-
-INSERT INTO role (name) VALUES
-    ('ROLE_CANDIDATE'),
-    ('ROLE_COMPANY');
-
-INSERT INTO role_privilege (role_id, privilege_id)
-SELECT r.id, p.id FROM role r, privilege p
-WHERE r.name = 'ROLE_CANDIDATE' AND p.name IN ('READ_PRIVILEGE', 'WRITE_PRIVILEGE');
-
-INSERT INTO role_privilege (role_id, privilege_id)
-SELECT r.id, p.id FROM role r, privilege p
-WHERE r.name = 'ROLE_COMPANY' AND p.name IN ('READ_PRIVILEGE', 'WRITE_PRIVILEGE');
