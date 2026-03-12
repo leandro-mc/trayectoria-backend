@@ -36,5 +36,6 @@ class WorkExperienceEntity(
     var endDate: LocalDate? = null,
 
     @Column(name = "is_current", nullable = false)
+    @get:JvmName("getIsCurrent")
     var isCurrent: Boolean = false
 )
