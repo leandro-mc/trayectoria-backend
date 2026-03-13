@@ -33,6 +33,7 @@ class CurriculumController(
         ResponseEntity.ok(getCurriculaUseCase.listAll(SecurityUtils.currentUserEmail()))
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('CANDIDATE', 'COMPANY')")
     fun getById(@PathVariable id: Long) =
         ResponseEntity.ok(getCurriculaUseCase.getById(SecurityUtils.currentUserEmail(), id))
 
