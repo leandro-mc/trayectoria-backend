@@ -1,6 +1,7 @@
 package com.edumora.trayectoria.web.controller
 
 import com.edumora.trayectoria.application.usecase.ai.GenerateCurriculumUseCase
+import com.edumora.trayectoria.application.usecase.ai.GetBaseCurriculumUseCase
 import com.edumora.trayectoria.application.usecase.ai.GetCurriculaUseCase
 import com.edumora.trayectoria.shared.util.SecurityUtils
 import com.edumora.trayectoria.web.dto.request.ai.GenerateCurriculumRequest
@@ -22,7 +23,8 @@ import org.springframework.web.bind.annotation.RestController
 @PreAuthorize("hasRole('CANDIDATE')")
 class CurriculumController(
     private val generateUseCase: GenerateCurriculumUseCase,
-    private val getCurriculaUseCase: GetCurriculaUseCase
+    private val getCurriculaUseCase: GetCurriculaUseCase,
+    private val getBaseCurriculumUseCase: GetBaseCurriculumUseCase
 ) {
     @PostMapping("/generate")
     fun generate(@RequestBody @Valid request: GenerateCurriculumRequest) =
@@ -56,4 +58,14 @@ class CurriculumController(
             offerId
         )
     )
+
+    @GetMapping("/base/{candidateId}")
+    @PreAuthorize("hasRole('COMPANY')")
+    fun getBase(@PathVariable candidateId: Long) =
+        ResponseEntity.ok(
+            getBaseCurriculumUseCase.execute(
+                SecurityUtils.currentUserEmail(),
+                candidateId
+            )
+        )
 }
