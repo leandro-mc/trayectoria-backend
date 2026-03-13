@@ -40,4 +40,7 @@ interface JobApplicationRepository : JpaRepository<JobApplicationEntity, Long> {
     ): Page<JobApplicationEntity>
 
     fun existsByIdAndCandidateUserId(id: Long, candidateId: Long): Boolean
+
+    fun countByJobOfferCompanyUserId(companyUserId: Long): Long
+    fun countByJobOfferCompanyUserIdAndStatus(companyUserId: Long, status: String): Long
 }
