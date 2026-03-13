@@ -70,6 +70,12 @@ dependencies {
 	testImplementation("org.testcontainers:testcontainers")
 	testImplementation("org.testcontainers:postgresql")
 	testImplementation("org.testcontainers:junit-jupiter")
+
+	// Docs and deploy
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.8")
+
+	implementation("org.apache.commons:commons-lang3:3.18.0")
 }
 
 kotlin {

@@ -5,6 +5,7 @@ import com.edumora.trayectoria.application.usecase.company.GetStatsUseCase
 import com.edumora.trayectoria.application.usecase.company.UpdateCompanyProfileUseCase
 import com.edumora.trayectoria.shared.util.SecurityUtils
 import com.edumora.trayectoria.web.dto.request.company.UpdateCompanyProfileRequest
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/v1/companies")
 @PreAuthorize("hasRole('COMPANY')")
+@Tag(name = "Company Profile")
 class CompanyController(
     private val getProfileUseCase: GetCompanyProfileUseCase,
     private val updateProfileUseCase: UpdateCompanyProfileUseCase,

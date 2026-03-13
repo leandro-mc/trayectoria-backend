@@ -5,6 +5,7 @@ import com.edumora.trayectoria.application.usecase.SkillCatalogUseCase
 import com.edumora.trayectoria.shared.util.SecurityUtils
 import com.edumora.trayectoria.web.dto.request.joboffer.CreateJobOfferRequest
 import com.edumora.trayectoria.web.dto.request.joboffer.UpdateJobOfferStatusRequest
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/v1/job-offers")
+@Tag(name = "Job Offers")
 class JobOfferController(
     private val jobOfferUseCase: JobOfferUseCase,
     private val skillCatalogUseCase: SkillCatalogUseCase

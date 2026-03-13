@@ -8,6 +8,7 @@ import com.edumora.trayectoria.application.usecase.jobapplication.UpdateApplicat
 import com.edumora.trayectoria.shared.util.SecurityUtils
 import com.edumora.trayectoria.web.dto.request.application.ApplyRequest
 import com.edumora.trayectoria.web.dto.request.application.UpdateApplicationStatusRequest
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
@@ -34,6 +35,7 @@ import org.springframework.web.bind.annotation.RestController
  * PATCH  /v1/applications/{id}/status             -> change status
  */
 @RestController
+@Tag(name = "Applications")
 class ApplicationController(
     private val applyUseCase: ApplyToJobOfferUseCase,
     private val getMyApplicationsUseCase: GetMyApplicationsUseCase,

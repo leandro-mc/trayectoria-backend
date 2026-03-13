@@ -9,6 +9,7 @@ import com.edumora.trayectoria.web.dto.request.auth.RefreshTokenRequest
 import com.edumora.trayectoria.web.dto.request.auth.RegisterCandidateRequest
 import com.edumora.trayectoria.web.dto.request.auth.RegisterCompanyRequest
 import com.edumora.trayectoria.web.dto.response.AuthResponse
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -32,6 +33,7 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController
 @RequestMapping("/v1/auth")
+@Tag(name = "Auth")
 class AuthController(
     private val registerCandidateUseCase: RegisterCandidateUseCase,
     private val registerCompanyUseCase: RegisterCompanyUseCase,

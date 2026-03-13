@@ -2,6 +2,7 @@ package com.edumora.trayectoria.web.controller
 
 import com.edumora.trayectoria.application.usecase.SavedOfferUseCase
 import com.edumora.trayectoria.shared.util.SecurityUtils
+import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
 import org.springframework.http.HttpStatus
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/v1/saved-offers")
 @PreAuthorize("hasRole('CANDIDATE')")
+@Tag(name = "Saved Offers")
 class SavedOfferController(
     private val savedOfferUseCase: SavedOfferUseCase
 ) {
