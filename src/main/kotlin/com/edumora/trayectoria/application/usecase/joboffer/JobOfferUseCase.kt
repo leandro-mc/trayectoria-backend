@@ -11,6 +11,7 @@ import com.edumora.trayectoria.shared.util.PageResponse
 import com.edumora.trayectoria.shared.util.orThrow
 import com.edumora.trayectoria.web.dto.request.joboffer.CreateJobOfferRequest
 import com.edumora.trayectoria.web.dto.request.joboffer.UpdateJobOfferStatusRequest
+import com.edumora.trayectoria.web.dto.response.JobOfferInterviewInstructionsResponse
 import com.edumora.trayectoria.web.dto.response.JobOfferResponse
 import com.edumora.trayectoria.web.dto.response.JobOfferSummaryResponse
 import com.edumora.trayectoria.web.mapper.JobOfferMapper
@@ -140,5 +141,18 @@ class JobOfferUseCase(
         if (!jobOfferRepository.existsByIdAndCompanyUserId(offerId, userId)) {
             throw ForbiddenException("You don't own this job offer")
         }
+    }
+
+    @Transactional(readOnly = true)
+    fun getInterviewInstructions(email: String, id: Long): JobOfferInterviewInstructionsResponse {
+        val user = userRepository.findByEmail(email).orThrow("User not found")
+        verifyOwnership(id, user.id)
+        val offer = jobOfferRepository.findById(id).orThrow("Job offer not found: $id")
+        return JobOfferInterviewInstructionsResponse(
+            jobOfferId = offer.id,
+            jobOfferTitle = offer.title,
+            interviewInstructions = offer.interviewInstructions,
+            requiresInterview = offer.requiresInterview
+        )
     }
 }

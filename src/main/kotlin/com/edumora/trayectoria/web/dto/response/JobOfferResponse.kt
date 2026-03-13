@@ -34,3 +34,10 @@ data class JobOfferSummaryResponse(
     val createdAt: LocalDateTime,
     val skills: List<SkillResponse>
 )
+
+data class JobOfferInterviewInstructionsResponse(
+    val jobOfferId: Long,
+    val jobOfferTitle: String,
+    val interviewInstructions: String?,
+    val requiresInterview: Boolean
+)
