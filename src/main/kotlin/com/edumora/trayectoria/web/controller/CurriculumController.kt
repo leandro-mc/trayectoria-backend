@@ -5,6 +5,7 @@ import com.edumora.trayectoria.application.usecase.ai.GetBaseCurriculumUseCase
 import com.edumora.trayectoria.application.usecase.ai.GetCurriculaUseCase
 import com.edumora.trayectoria.shared.util.SecurityUtils
 import com.edumora.trayectoria.web.dto.request.ai.GenerateCurriculumRequest
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/v1/curricula")
 @PreAuthorize("hasRole('CANDIDATE')")
+@Tag(name = "AI — Curricula")
 class CurriculumController(
     private val generateUseCase: GenerateCurriculumUseCase,
     private val getCurriculaUseCase: GetCurriculaUseCase,

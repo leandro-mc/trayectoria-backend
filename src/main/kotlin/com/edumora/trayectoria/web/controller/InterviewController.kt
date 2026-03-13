@@ -7,6 +7,7 @@ import com.edumora.trayectoria.application.usecase.ai.StartInterviewUseCase
 import com.edumora.trayectoria.shared.util.SecurityUtils
 import com.edumora.trayectoria.web.dto.request.ai.SendMessageRequest
 import com.edumora.trayectoria.web.dto.request.ai.StartInterviewRequest
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/v1/interviews")
 @PreAuthorize("hasRole('CANDIDATE')")
+@Tag(name = "AI — Interviews")
 class InterviewController(
     private val startUseCase: StartInterviewUseCase,
     private val sendMessageUseCase: SendInterviewMessageUseCase,

@@ -12,6 +12,7 @@ import com.edumora.trayectoria.web.dto.request.candidate.LanguageRequest
 import com.edumora.trayectoria.web.dto.request.candidate.SkillsRequest
 import com.edumora.trayectoria.web.dto.request.candidate.UpdateCandidateProfileRequest
 import com.edumora.trayectoria.web.dto.request.candidate.WorkExperienceRequest
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -36,6 +37,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/v1/candidates")
 @PreAuthorize("hasRole('CANDIDATE')")
+@Tag(name = "Candidate Profile")
 class CandidateController(
     private val getProfileUseCase: GetCandidateProfileUseCase,
     private val updateProfileUseCase: UpdateCandidateProfileUseCase,
