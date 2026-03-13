@@ -43,6 +43,26 @@ server:
   servlet:
     context-path: /api       # All endpoints are prefixed with /api
 
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+    tryItOutEnabled: true
+    filter: true
+  api-docs:
+    path: /v3/api-docs
+  packages-to-scan: com.edumora.trayectoria.web.controller
+  paths-to-match: /v1/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
 jwt:
   secret: ${JWT_SECRET}
   expiration-ms: ${JWT_EXPIRATION_MS:86400000}   # 24 hours
