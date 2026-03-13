@@ -1,6 +1,7 @@
 package com.edumora.trayectoria.web.controller
 
 import com.edumora.trayectoria.application.usecase.company.GetCompanyProfileUseCase
+import com.edumora.trayectoria.application.usecase.company.GetStatsUseCase
 import com.edumora.trayectoria.application.usecase.company.UpdateCompanyProfileUseCase
 import com.edumora.trayectoria.shared.util.SecurityUtils
 import com.edumora.trayectoria.web.dto.request.company.UpdateCompanyProfileRequest
@@ -18,7 +19,8 @@ import org.springframework.web.bind.annotation.RestController
 @PreAuthorize("hasRole('COMPANY')")
 class CompanyController(
     private val getProfileUseCase: GetCompanyProfileUseCase,
-    private val updateProfileUseCase: UpdateCompanyProfileUseCase
+    private val updateProfileUseCase: UpdateCompanyProfileUseCase,
+    private val getStatsUseCase: GetStatsUseCase
 ) {
     @GetMapping("/me")
     fun getProfile() =
@@ -27,4 +29,9 @@ class CompanyController(
     @PutMapping("/me")
     fun updateProfile(@RequestBody @Valid request: UpdateCompanyProfileRequest) =
         ResponseEntity.ok(updateProfileUseCase.execute(SecurityUtils.currentUserEmail(), request))
+
+    @GetMapping("/me/stats")
+    @PreAuthorize("hasRole('COMPANY')")
+    fun getStats() =
+        ResponseEntity.ok(getStatsUseCase.execute(SecurityUtils.currentUserEmail()))
 }

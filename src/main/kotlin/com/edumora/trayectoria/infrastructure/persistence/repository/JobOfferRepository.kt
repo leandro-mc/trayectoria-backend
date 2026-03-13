@@ -32,4 +32,6 @@ interface JobOfferRepository : JpaRepository<JobOfferEntity, Long>,
         WHERE jo.id = :id
     """)
     fun findByIdWithSkills(id: Long): Optional<JobOfferEntity>
+
+    fun countByCompanyUserIdAndStatus(companyUserId: Long, status: String): Long
 }
