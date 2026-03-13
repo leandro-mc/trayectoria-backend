@@ -13,4 +13,9 @@ interface GeneratedCurriculumRepository : JpaRepository<GeneratedCurriculumEntit
     fun existsByIdAndCandidateUserId(id: Long, candidateUserId: Long): Boolean
 
     fun findByCandidateUserId(candidateUserId: Long): List<GeneratedCurriculumEntity>
+
+    fun findTopByCandidateUserIdAndJobOfferIdOrderByCreatedAtDesc(
+        candidateUserId: Long,
+        jobOfferId: Long
+    ): Optional<GeneratedCurriculumEntity>
 }

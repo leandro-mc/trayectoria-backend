@@ -45,4 +45,24 @@ class GetCurriculaUseCase(
         }
         curriculumRepository.deleteById(id)
     }
+
+    @Transactional(readOnly = true)
+    fun getLatestByOfferAndCandidate(
+        email: String,
+        candidateId: Long,
+        offerId: Long
+    ): GeneratedCurriculumResponse {
+        val user = userRepository.findByEmail(email).orThrow("User not found")
+
+        // Ownership check: candidato solo puede ver el suyo
+        val isCandidate = user.roles.any { it.name == "ROLE_CANDIDATE" }
+        if (isCandidate && user.id != candidateId) {
+            throw ForbiddenException("You can only access your own curricula")
+        }
+
+        return curriculumRepository
+            .findTopByCandidateUserIdAndJobOfferIdOrderByCreatedAtDesc(candidateId, offerId)
+            .orThrow("No curriculum found for candidateId=$candidateId and offerId=$offerId")
+            .let { mapper.toResponse(it) }
+    }
 }
