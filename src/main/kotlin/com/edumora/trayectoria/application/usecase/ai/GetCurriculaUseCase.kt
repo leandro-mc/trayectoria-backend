@@ -26,8 +26,12 @@ class GetCurriculaUseCase(
     fun getById(email: String, id: Long): GeneratedCurriculumResponse {
         val user = userRepository.findByEmail(email).orThrow("User not found")
         val curriculum = curriculumRepository.findById(id).orThrow("Curriculum not found: $id")
-        if (curriculum.candidate?.userId != user.id) {
-            throw ForbiddenException("You don't own this curriculum")
+        // Candidato: solo puede ver los suyos
+        // Empresa: puede ver cualquiera (para revisar postulaciones)
+        val isCandidate = user.roles.any { it.name == "ROLE_CANDIDATE" }
+
+        if (isCandidate && curriculum.candidate?.user?.id != user.id) {
+            throw ForbiddenException("Curriculum does not belong to you")
         }
         return mapper.toResponse(curriculum)
     }
