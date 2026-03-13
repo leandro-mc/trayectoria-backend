@@ -1,0 +1,21 @@
+# Exclude build output but keep gradle wrapper
+build/
+.gradle/
+out/
+
+# Exclude sensitive files
+.env
+*.env
+
+# Exclude IDE files
+.idea/
+.vscode/
+*.iml
+
+# Exclude logs
+*.log
+logs/
+
+# Exclude OS files
+.DS_Store
+Thumbs.db
