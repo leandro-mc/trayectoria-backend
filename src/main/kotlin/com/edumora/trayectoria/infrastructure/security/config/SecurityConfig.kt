@@ -106,6 +106,7 @@ class SecurityConfig(
                     .requestMatchers("/v1/applications/**").hasAnyRole("CANDIDATE", "COMPANY")
                     .requestMatchers("/v1/saved-offers/**").hasRole("CANDIDATE")
                     .requestMatchers("/v1/curricula/{id}").hasAnyRole("CANDIDATE", "COMPANY")
+                    .requestMatchers("/v1/curricula/latest").hasAnyRole("CANDIDATE", "COMPANY")
                     .requestMatchers("/v1/curricula/**").hasRole("CANDIDATE")
                     .requestMatchers("/v1/interviews/**").hasRole("CANDIDATE")
 

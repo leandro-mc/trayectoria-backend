@@ -28,6 +28,7 @@ class GeneratedCurriculumEntity(
     var content: CurriculumContent = CurriculumContent(),
 
     @Column(name = "is_ai_generated", nullable = false)
+    @get:JvmName("getIsAiGenerated")
     var isAiGenerated: Boolean = true,
 
     @Column(name = "created_at", nullable = false, updatable = false)

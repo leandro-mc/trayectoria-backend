@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -42,4 +43,17 @@ class CurriculumController(
         getCurriculaUseCase.delete(SecurityUtils.currentUserEmail(), id)
         return ResponseEntity.noContent().build()
     }
+
+    @GetMapping("/latest")
+    @PreAuthorize("hasAnyRole('CANDIDATE', 'COMPANY')")
+    fun getLatestByOffer(
+        @RequestParam candidateId: Long,
+        @RequestParam offerId: Long
+    ) = ResponseEntity.ok(
+        getCurriculaUseCase.getLatestByOfferAndCandidate(
+            SecurityUtils.currentUserEmail(),
+            candidateId,
+            offerId
+        )
+    )
 }
