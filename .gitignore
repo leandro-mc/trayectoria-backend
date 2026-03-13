@@ -46,6 +46,7 @@ logs/
 # Compiled
 *.class
 *.jar
+!gradle/wrapper/gradle-wrapper.jar
 
 ### VS Code ###
 .vscode/
