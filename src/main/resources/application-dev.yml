@@ -18,6 +18,9 @@ spring:
   flyway:
     enabled: true
 
+  springdoc:
+    swagger-ui:
+      enabled: true
   # Disable Spring Security's default form login — JWT replaces it
   security:
     user:

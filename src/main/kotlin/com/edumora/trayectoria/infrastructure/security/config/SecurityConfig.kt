@@ -99,7 +99,12 @@ class SecurityConfig(
 
                     // Skills catálogo - público
                     .requestMatchers(HttpMethod.GET, "/v1/skills").permitAll()
-
+                    .requestMatchers(
+                        "/v3/api-docs/**",
+                        "/swagger-ui/**",
+                        "/swagger-ui.html",
+                        "/actuator/health"
+                    ).permitAll()
                     //  Rutas por rol 
                     .requestMatchers("/v1/candidates/**").hasRole("CANDIDATE")
                     .requestMatchers("/v1/companies/**").hasRole("COMPANY")
