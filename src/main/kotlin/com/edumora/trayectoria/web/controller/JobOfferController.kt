@@ -96,4 +96,13 @@ class JobOfferController(
         jobOfferUseCase.delete(SecurityUtils.currentUserEmail(), id)
         return ResponseEntity.noContent().build()
     }
+
+    @GetMapping("/{id}/interview-instructions")
+    @PreAuthorize("hasRole('COMPANY')")
+    fun getInterviewInstructions(@PathVariable id: Long) =
+        ResponseEntity.ok(
+            jobOfferUseCase.getInterviewInstructions(
+                SecurityUtils.currentUserEmail(), id
+            )
+        )
 }
