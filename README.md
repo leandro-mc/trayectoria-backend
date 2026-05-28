@@ -17,11 +17,11 @@ Built with **Kotlin + Spring Boot 3.5** following **Clean Architecture** princip
 | Migrations | Flyway                              |
 | Mapping | MapStruct                           |
 | AI | Spring AI + OpenAI API              |
-| File Storage | Cloudinary (Phase 2)                | 
 | Documentation | SpringDoc OpenAPI 3 (Swagger UI)    |
 | Testing | JUnit 5 + Testcontainers            |
 | Build | Gradle (Kotlin DSL)                 |
 
+[//]: # (| File Storage | Cloudinary &#40;Phase 2&#41;                | )
 ---
 
 ## Getting Started
@@ -108,18 +108,27 @@ src/main/kotlin/com/edumora/trayectoria/
 
 ---
 
-## Phase 2 (Backlog)
+[//]: # (## Phase 2 &#40;Backlog&#41;)
 
-- PDF curriculum export with ATS templates
-- OAuth 2.0 with Google
-- Candidate–offer matching engine
-- External course recommendations (Coursera API)
-- Company-required interviews before applying
-- Interview result sharing with companies
-- Notifications system
-- Admin role and dashboard
+[//]: # ()
+[//]: # (- PDF curriculum export with ATS templates)
 
----
+[//]: # (- OAuth 2.0 with Google)
+
+[//]: # (- Candidate–offer matching engine)
+
+[//]: # (- External course recommendations &#40;Coursera API&#41;)
+
+[//]: # (- Company-required interviews before applying)
+
+[//]: # (- Interview result sharing with companies)
+
+[//]: # (- Notifications system)
+
+[//]: # (- Admin role and dashboard)
+
+[//]: # ()
+[//]: # (---)
 
 ## Autor
 
