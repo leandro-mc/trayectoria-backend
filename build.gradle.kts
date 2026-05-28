@@ -76,6 +76,9 @@ dependencies {
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.8")
 
 	implementation("org.apache.commons:commons-lang3:3.18.0")
+
+	// Con spring-dotenv (lee variables de entorno desde un archivo .env en desarrollo)
+	implementation("me.paulschwarz:spring-dotenv:4.0.0")
 }
 
 kotlin {
