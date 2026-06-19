@@ -38,7 +38,7 @@ cp .env.example .env
 docker-compose up -d
 
 # Start the app
-./gradlew bootRun
+gradlew bootRun
 ```
 
 ---
@@ -53,7 +53,7 @@ http://localhost:8080/api/swagger-ui/index.html
 ## Environment Variables
 
 ```env
-DB_URL=jdbc:postgresql://localhost:5432/trayectoria
+DB_URL=jdbc:postgresql://localhost:5434/trayectoria
 DB_USERNAME=postgres
 DB_PASSWORD=yourpassword
 JWT_SECRET=your-256-bit-secret
