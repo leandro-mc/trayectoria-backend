@@ -1,140 +1,50 @@
-# TrayectorIA-backend
+# TrayectorIA — Backend
 
-REST API backend for **TrayectorIA** — an AI-powered job networking platform connecting candidates with companies.
+> Leer en español: [README.es.md](README.es.md)
 
-Built with **Kotlin + Spring Boot 3.5** following **Clean Architecture** principles.
+REST API for **TrayectorIA**, an AI-powered job networking platform that connects candidates with companies. Candidates build a profile, get an AI-generated CV tailored to an offer and practice mock interviews; companies publish offers and manage applications. Companion frontend: [trayectoria-web](https://github.com/leandro-mc/trayectoria-web).
 
----
+## Features
 
-## Tech Stack
+- **Two roles** (candidate and company) with JWT authentication and refresh tokens
+- **Candidate profile:** experience, education, skills and languages
+- **Job offers** with applications and status tracking; saved offers
+- **AI-generated CVs** from the candidate profile (Spring AI + OpenAI)
+- **AI mock interviews** based on the instructions of a job offer, with chat-style messages
+- **Company stats** dashboard endpoint
+- Voice interviews: planned (the endpoint only exposes a feature flag)
 
-| Layer | Technology                          |
-|---|-------------------------------------|
-| Language | Kotlin 1.9 + Java 21                |
-| Framework | Spring Boot 3.5.11                  |
-| Security | Spring Security + JWT (JJWT 0.12.6) |
-| Persistence | Spring Data JPA + PostgreSQL        |
-| Migrations | Flyway                              |
-| Mapping | MapStruct                           |
-| AI | Spring AI + OpenAI API              |
-| Documentation | SpringDoc OpenAPI 3 (Swagger UI)    |
-| Testing | JUnit 5 + Testcontainers            |
-| Build | Gradle (Kotlin DSL)                 |
+## Tech stack
 
-[//]: # (| File Storage | Cloudinary &#40;Phase 2&#41;                | )
----
+- Kotlin 1.9, Java 21, Spring Boot 3.5
+- Spring Security + JWT, role-based access
+- Spring Data JPA, PostgreSQL, Flyway migrations, MapStruct
+- Spring AI with the OpenAI API
+- SpringDoc OpenAPI (Swagger UI)
+- JUnit 5 + Testcontainers integration tests
+- Gradle (Kotlin DSL), Docker, Railway deploy config
 
-## Getting Started
+## Getting started
+
+Requirements: JDK 21 and Docker.
 
 ```bash
-# Clone and run
-git clone  https://github.com/leandro-mc/trayectoria-backend.git
+git clone https://github.com/leandro-mc/trayectoria-backend.git
 cd trayectoria-backend
-
-# Copy and fill env vars
-cp .env.example .env
-
-# Run with Docker (DB only)
-docker-compose up -d
-
-# Start the app
-gradlew bootRun
+cp .env.example .env     # DB, JWT secret, OpenAI key
+docker-compose up -d     # PostgreSQL only
+./gradlew bootRun        # Windows: gradlew.bat bootRun
 ```
 
----
+Swagger UI: `http://localhost:8080/api/swagger-ui/index.html`
+Tests: `./gradlew test` (requires Docker for Testcontainers)
 
-### API Documentation (Swagger UI)
-```
-http://localhost:8080/api/swagger-ui/index.html
-```
-
----
-
-## Environment Variables
-
-```env
-DB_URL=jdbc:postgresql://localhost:5434/trayectoria
-DB_USERNAME=postgres
-DB_PASSWORD=yourpassword
-JWT_SECRET=your-256-bit-secret
-JWT_EXPIRATION_MS=86400000
-JWT_REFRESH_EXPIRATION_MS=604800000
-OPENAI_API_KEY=sk-...
-OPENAI_MODEL=gpt-4o-mini
-CLOUDINARY_CLOUD_NAME=...
-CLOUDINARY_API_KEY=...
-CLOUDINARY_API_SECRET=...
-```
-
----
-
-## Project Structure
+## Structure
 
 ```
 src/main/kotlin/com/edumora/trayectoria/
-├── application/
-│   ├── port/
-│   │   └── output/         # Port interfaces (AI, storage, external services)
-│   └── usecase/            # One class per use case
-├── infrastructure/
-│   ├── ai/                 # Spring AI / OpenAI implementation
-│   ├── persistence/
-│   │   ├── entity/         # JPA @Entity classes
-│   │   └── repository/     # JpaRepository interfaces
-│   ├── security/
-│   │   ├── config/         # SecurityFilterChain, CORS
-│   │   ├── jwt/            # JwtFilter, JwtService
-│   │   └── service/        # UserDetailsService implementation
-│   ├── storage/            # Cloudinary file upload
-│   └── config/             # OpenAPI config, general beans
-├── web/
-│   ├── controller/         # @RestController classes
-│   ├── dto/
-│   │   ├── request/        # Incoming payloads
-│   │   └── response/       # Outgoing payloads
-│   └── mapper/             # MapStruct mappers (Entity ↔ DTO)
-└── shared/
-    ├── exception/          # GlobalExceptionHandler + custom exceptions
-    └── util/               # Kotlin extensions, SecurityUtils
+├── application/     # Use cases (one class each) and output ports (AI)
+├── infrastructure/  # JPA entities/repositories, security (JWT), Spring AI, config
+├── web/             # Controllers, DTOs and MapStruct mappers
+└── shared/          # Exception handling and utilities
 ```
-
----
-
-## Running Tests
-
-```bash
-./gradlew test
-```
-
----
-
-[//]: # (## Phase 2 &#40;Backlog&#41;)
-
-[//]: # ()
-[//]: # (- PDF curriculum export with ATS templates)
-
-[//]: # (- OAuth 2.0 with Google)
-
-[//]: # (- Candidate–offer matching engine)
-
-[//]: # (- External course recommendations &#40;Coursera API&#41;)
-
-[//]: # (- Company-required interviews before applying)
-
-[//]: # (- Interview result sharing with companies)
-
-[//]: # (- Notifications system)
-
-[//]: # (- Admin role and dashboard)
-
-[//]: # ()
-[//]: # (---)
-
-## Autor
-
-**Leandro Mora Corrales**
-[linkedin.com/in/leandromora](https://linkedin.com/in/leandromora)
-
-## Licencia
-
-MIT License — see [LICENSE](LICENSE) for details.
